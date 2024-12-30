@@ -7,12 +7,10 @@
 | nickname           | string | null: false                    |
 | email              | string | null: false                    |
 | encrypted_password | string | null: false                    |
-| user_image         | string |                                |
 | family_name        | string | null: false                    |
 | first_name         | string | null: false                    |
 | family_name_kana   | string | null: false                    |
 | first_name_kana    | string | null: false                    |
-| introduction       | text   |                                |
 
 ### Association
 - has_many :items
@@ -23,10 +21,6 @@
 
 | Column             | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
-| family_name        | string     | null: false                    |
-| first_name         | string     | null: false                    |
-| family_name_kana   | string     | null: false                    |
-| first_name_kana    | string     | null: false                    |
 | post_code          | string     | null: false                    |
 | prefecture         | string     | null: false                    |
 | city               | string     | null: false                    |
@@ -49,16 +43,6 @@
 ### Association
 - belongs_to :user
 
-## categoryテーブル
-
-| Column             | Type       | Options                        |
-| ------------------ | ---------- | ------------------------------ |
-| name               | string     | null: false                    |
-| ancestry           | string     | null: false                    |
-
-### Association
-- has_many :items
-
 ## itemsテーブル
 
 | Column             | Type       | Options                        |
@@ -77,8 +61,6 @@
 
 ### Association
 - belongs_to :user
-- belongs_to :category
-- belongs_to :brand
 - has_many :images
 
 ## imagesテーブル
@@ -90,12 +72,3 @@
 
 ### Association
 - belongs_to :items
-
-## brandテーブル
-
-| Column             | Type       | Options                        |
-| ------------------ | ---------- | ------------------------------ |
-| name               | string     | index: true                    |
-
-### Association
-- has_many :items
