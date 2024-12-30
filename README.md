@@ -15,10 +15,10 @@
 
 ### Association
 - has_many :items
-- belongs to :destination
-- belongs to :card
+- belongs to :destinations
+- belongs to :cards
 
-## destinationテーブル
+## destinationsテーブル
 
 | Column             | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
@@ -28,32 +28,30 @@
 | adress             | string     | null: false                    |
 | buliding_name      | string     |                                |
 | phone_number       | string     | null: false                    |
-| user_id            | references | null: false, foreign_key: true |
 
 ### Association
-- belongs_to :user
+- belongs_to :users
 
-## cardテーブル
+## cardsテーブル
 
 | Column             | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
 | user_id            | references | null: false, foreign_key: true |
-| card_id            | string     | null: false                    |
+| item_id            | string     | null: false                    |
 
 ### Association
-- belongs_to :user
+- belongs_to :users
 
 ## itemsテーブル
 
 | Column             | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
 | name               | string     | null: false                    |
-| price              | integer    | null: false, foreign_key: true |
+| price              | integer    | null: false                    |
 | description        | text       | null: false                    |
 | status             | string     | null: false                    |
 | prefecture_id      | string     | null: false                    |
 | category_id        | integer    | null: false                    |
-| user_id            | references | null: false, foreign_key: true |
 
 ### Association
-- belongs_to :user
+- belongs_to :users
