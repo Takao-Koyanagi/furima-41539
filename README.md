@@ -11,6 +11,7 @@
 | first_name         | string | null: false                    |
 | family_name_kana   | string | null: false                    |
 | first_name_kana    | string | null: false                    |
+| birth_day          | date   | null: false                    |
 
 ### Association
 - has_many :items
@@ -27,7 +28,7 @@
 | adress             | string     | null: false                    |
 | buliding_name      | string     |                                |
 | phone_number       | string     | null: false                    |
-| user_id            | integer    | null: false, foreign_key: true |
+| user_id            | references | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :user
@@ -36,8 +37,7 @@
 
 | Column             | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
-| user_id            | integer    | null: false, foreign_key: true |
-| customer_id        | string     | null: false                    |
+| user_id            | references | null: false, foreign_key: true |
 | card_id            | string     | null: false                    |
 
 ### Association
@@ -54,10 +54,10 @@
 | shipping_cost      | string     | null: false                    |
 | shipping_day       | string     | null: false                    |
 | prefecture_id      | string     | null: false                    |
-| category_id        | integer    | null: false, foreign_key: true |
-| brand_id           | integer    | null: false, foreign_key: true |
-| shipping_id        | integer    | null: false, foreign_key: true |
-| user_id            | integer    | null: false, foreign_key: true |
+| category_id        | integer    | null: false                    |
+| brand_id           | integer    | null: false                    |
+| shipping_id        | integer    | null: false                    |
+| user_id            | references | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :user
