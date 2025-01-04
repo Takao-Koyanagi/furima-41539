@@ -15,8 +15,7 @@
 
 ### Association
 - has_many :items
-- belongs to :destinations
-- belongs to :cards
+- belongs_to :card
 
 ## destinationsテーブル
 
@@ -30,28 +29,29 @@
 | phone_number       | string     | null: false                    |
 
 ### Association
-- belongs_to :users
+- has_one :card
 
 ## cardsテーブル
 
 | Column             | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
-| user_id            | references | null: false, foreign_key: true |
-| item_id            | string     | null: false                    |
+| user               | references | null: false, foreign_key: true |
+| item               | references | null: false                    |
 
 ### Association
-- belongs_to :users
+- belongs_to :user
 
 ## itemsテーブル
 
 | Column             | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
-| name               | string     | null: false                    |
-| price              | integer    | null: false                    |
-| description        | text       | null: false                    |
-| status             | string     | null: false                    |
-| prefecture_id      | string     | null: false                    |
+| name_id            | integer    | null: false                    |
+| price_id           | integer    | null: false                    |
 | category_id        | integer    | null: false                    |
+| condition_id       | integer    | null: false                    |
+| shipping_cost_id   | integer    | null: false                    |
+| shipping_origin_id | integer    | null: false                    |
+| shipping_day_id    | integer    | null: false                    |
 
 ### Association
-- belongs_to :users
+- belongs_to :user
