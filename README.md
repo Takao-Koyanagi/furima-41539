@@ -15,21 +15,22 @@
 
 ### Association
 - has_many :items
-- belongs_to :card
+- has_many :cards
 
 ## destinationsテーブル
 
 | Column             | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
 | post_code          | string     | null: false                    |
-| prefecture         | string     | null: false                    |
+| description        | text       | null: false                    |
 | city               | string     | null: false                    |
 | adress             | string     | null: false                    |
 | buliding_name      | string     |                                |
 | phone_number       | string     | null: false                    |
+| card               | references | null: false                    |
 
 ### Association
-- has_one :card
+- belongs_to :card
 
 ## cardsテーブル
 
@@ -40,18 +41,24 @@
 
 ### Association
 - belongs_to :user
+- belongs_to :item
+- has_one :destination
+
 
 ## itemsテーブル
 
 | Column             | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
-| name_id            | integer    | null: false                    |
-| price_id           | integer    | null: false                    |
+| name               | string     | null: false                    |
+| price              | integer    | null: false                    |
+| description        | text       | null: false                    |
 | category_id        | integer    | null: false                    |
 | condition_id       | integer    | null: false                    |
 | shipping_cost_id   | integer    | null: false                    |
 | shipping_origin_id | integer    | null: false                    |
 | shipping_day_id    | integer    | null: false                    |
+| user               | references | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :user
+- has_one :card
