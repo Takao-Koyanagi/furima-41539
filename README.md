@@ -22,12 +22,12 @@
 | Column             | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
 | post_code          | string     | null: false                    |
-| description        | text       | null: false                    |
+| prefecture_id      | integer    | null: false                    |
 | city               | string     | null: false                    |
 | adress             | string     | null: false                    |
 | buliding_name      | string     |                                |
 | phone_number       | string     | null: false                    |
-| card               | references | null: false                    |
+| card               | references | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :card
@@ -37,7 +37,7 @@
 | Column             | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
 | user               | references | null: false, foreign_key: true |
-| item               | references | null: false                    |
+| item               | references | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :user
@@ -55,7 +55,7 @@
 | category_id        | integer    | null: false                    |
 | condition_id       | integer    | null: false                    |
 | shipping_cost_id   | integer    | null: false                    |
-| shipping_origin_id | integer    | null: false                    |
+| prefecture_id      | integer    | null: false                    |
 | shipping_day_id    | integer    | null: false                    |
 | user               | references | null: false, foreign_key: true |
 
