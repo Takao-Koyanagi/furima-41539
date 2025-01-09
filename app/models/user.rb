@@ -5,11 +5,15 @@ class User < ApplicationRecord
   validates :family_name_kana, presence: true
   validates :first_name_kana, presence: true
   validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze }
-  validates :family_name, format: { with: /\A[ぁ-んァ-ヶー一-龠々]+\z/ }
-  validates :first_name, format: { with: /\A[ぁ-んァ-ヶー一-龠々]+\z/ }
-  validates :family_name_kana, format: { with: /\A[\p{katakana}ー－&&[^ -~｡-ﾟ]]+\z/ }
-  validates :first_name_kana, format: { with: /\A[\p{katakana}ー－&&[^ -~｡-ﾟ]]+\z/ }
-  validates :birth_day, presence: true
+  with_options format: { with: /\A[ぁ-んァ-ヶー一-龠々]+\z/ } do
+    validates :family_name
+    validates :first_name
+  end
+  with_options format: { with: /\A[\p{katakana}ー－&&[^ -~｡-ﾟ]]+\z/ } do
+    validates :family_name_kana
+    validates :first_name_kana
+  end
+    validates :birth_day, presence: true
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
