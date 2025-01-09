@@ -66,7 +66,14 @@ RSpec.describe User, type: :model do
         @user.password = 'あい12ab'
         @user.password_confirmation = 'あい12ab'
         @user.valid?
-        expect(@user.errors.full_messages).to include "Password is invalid"        
+        expect(@user.errors.full_messages).to include "Password is invalid"
+      end
+      it '重複したemailが存在する場合は登録できない' do
+        @user.save
+        another_user = FactoryBot.build(:user)
+        another_user.email = @user.email
+        another_user.valid?
+        expect(another_user.errors.full_messages).to include('Email has already been taken')
       end
       it 'family nameが空では登録できない' do
         @user.family_name = ''
@@ -81,12 +88,12 @@ RSpec.describe User, type: :model do
       it 'family nameが全角じゃないと保存できない' do
         @user.family_name = 'aやマ田'
         @user.valid?
-      expect(@user.errors.full_messages).to include "Family name is invalid"
+      expect(@user.errors.full_messages).to include "Family name is invalid. Input full-width characters."
       end  
       it 'first nameが全角じゃないと保存できない' do
         @user.first_name = 'a太ろウ'
         @user.valid?
-        expect(@user.errors.full_messages).to include "First name is invalid"
+        expect(@user.errors.full_messages).to include "First name is invalid. Input full-width characters."
       end
       it 'family name kanaが空では登録できない' do
         @user.family_name_kana = ''
@@ -101,12 +108,12 @@ RSpec.describe User, type: :model do
       it 'family name kanaがカタカナでないと登録できない' do
         @user.family_name_kana = 'a山だ'
         @user.valid?
-        expect(@user.errors.full_messages).to include "Family name kana is invalid"
+        expect(@user.errors.full_messages).to include "Family name kana is invalid. Input full-width katakana characters."
       end
       it 'first name kanaがカタカナでないと登録できない' do
         @user.first_name_kana = 'a太ろウ'
         @user.valid?
-        expect(@user.errors.full_messages).to include "First name kana is invalid"
+        expect(@user.errors.full_messages).to include "First name kana is invalid. Input full-width katakana characters."
       end
       it 'birth dayが空では登録できない' do
         @user.birth_day = ''
