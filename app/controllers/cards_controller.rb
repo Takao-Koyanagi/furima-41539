@@ -11,7 +11,7 @@ class CardsController < ApplicationController
   def create
     @card_address = CardAddress.new(card_params)
     if @card_address.valid?
-      Payjp.api_key = "sk_test_0ea02eb773aed88130e5b9e5"  
+      Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
       Payjp::Charge.create(
         amount: @item.price,  
         card: card_params[:token],    
