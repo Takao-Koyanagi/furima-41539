@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_01_24_161558) do
+ActiveRecord::Schema[7.1].define(version: 2025_01_20_131013) do
   create_table "active_storage_attachments", charset: "utf8mb3", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -39,14 +39,6 @@ ActiveRecord::Schema[7.1].define(version: 2025_01_24_161558) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
-  create_table "articles", charset: "utf8mb3", force: :cascade do |t|
-    t.string "title", null: false
-    t.text "text", null: false
-    t.integer "genre_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "cards", charset: "utf8mb3", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "item_id", null: false
@@ -60,8 +52,8 @@ ActiveRecord::Schema[7.1].define(version: 2025_01_24_161558) do
     t.string "post_code", null: false
     t.integer "prefecture_id", null: false
     t.string "city", null: false
-    t.string "adress", null: false
-    t.string "buliding_name"
+    t.string "address", null: false
+    t.string "building_name"
     t.string "phone_number", null: false
     t.bigint "card_id", null: false
     t.index ["card_id"], name: "index_destinations_on_card_id"
@@ -80,12 +72,6 @@ ActiveRecord::Schema[7.1].define(version: 2025_01_24_161558) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_items_on_user_id"
-  end
-
-  create_table "orders", charset: "utf8mb3", force: :cascade do |t|
-    t.integer "price", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "users", charset: "utf8mb3", force: :cascade do |t|

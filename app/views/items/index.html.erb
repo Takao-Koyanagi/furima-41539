@@ -122,14 +122,15 @@
       <% if @items.present? %>
         <% @items.each do |item| %>
           <li class='list'>
-            <%= link_to  item_path(item) do %>
+            <%= link_to item_path(item) do %>
             <div class='item-img-content'>
               <%= image_tag item.image, class: "item-img" %>
 
-              <% if @items[0] == nil %>
+              <% if item.card.present? %>
                 <div class='sold-out'>
                   <span>Sold Out!!</span>
                 </div>
+              <% else%>
               <% end %>
 
             </div>
