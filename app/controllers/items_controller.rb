@@ -27,6 +27,9 @@ class ItemsController < ApplicationController
     unless current_user == @item.user
       redirect_to root_path
     end
+    if current_user == @item.user && @item.card.present?
+      redirect_to root_path
+    end
   end
 
   def update
