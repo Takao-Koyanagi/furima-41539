@@ -28,6 +28,8 @@
       </p>
     </div>
 
+    <%= include_gon %>
+
     <%= form_with model: @card_address, url: item_cards_path, id: 'charge-form', class: 'card-form', local: true do |f| %>
       <%= render 'layouts/error_messages', model: @card_address %>
     <div class='credit-card-form'>
